@@ -17,7 +17,7 @@
     </parent>
     <groupId>testapps.springframework</groupId>
     <artifactId>txn-spring-petclinic</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>txn-spring-petclinic</name>
     <description>Spring Pet Clinic</description>
 
@@ -48,6 +48,6 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:spring-devops/txn-spring-petclinic.git</developerConnection>
-      <tag>v0.0.1</tag>
+      <tag>HEAD</tag>
   </scm>
 </project>
