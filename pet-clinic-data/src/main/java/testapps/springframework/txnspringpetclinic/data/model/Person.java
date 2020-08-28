@@ -1,6 +1,6 @@
 package testapps.springframework.txnspringpetclinic.data.model;
 
-public class Person {
+public class Person extends BaseEntityLong {
     private String firstName;
     private String lastName;
 
@@ -13,7 +13,7 @@ public class Person {
     }
 
     public String getLastName() {
-        return lastName;
+        return lastName ;
     }
 
     public void setLastName(String lastName) {

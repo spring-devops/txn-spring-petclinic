@@ -1,6 +1,6 @@
 package testapps.springframework.txnspringpetclinic.data.model;
 
-public class PetType {
+public class PetType extends BaseEntityLong {
     private String name;
 
     public String getName() {
