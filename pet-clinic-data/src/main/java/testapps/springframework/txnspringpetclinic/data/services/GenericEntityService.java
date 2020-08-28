@@ -8,4 +8,8 @@ public interface GenericEntityService<T, K> {
         T save(T t);
 
         Set<T> findAll();
+
+        void delete (T t);
+
+        void deleteById (K k);
 }
