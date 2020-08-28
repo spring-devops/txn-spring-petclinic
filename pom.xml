@@ -17,7 +17,7 @@
     </parent>
     <groupId>testapps.springframework</groupId>
     <artifactId>txn-spring-petclinic</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>txn-spring-petclinic</name>
     <description>Spring Pet Clinic</description>
 
@@ -37,6 +37,7 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <goals>install</goals>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                     <tagNameFormat>v@{project.version}</tagNameFormat>
                     <checkModificationExcludes>
                         <checkModificationExclude>pom.xml</checkModificationExclude>
@@ -48,6 +49,6 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:spring-devops/txn-spring-petclinic.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>v0.0.2</tag>
   </scm>
 </project>
