@@ -17,7 +17,7 @@
     </parent>
     <groupId>testapps.springframework</groupId>
     <artifactId>txn-spring-petclinic</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
     <name>txn-spring-petclinic</name>
     <description>Spring Pet Clinic</description>
 
@@ -38,7 +38,8 @@
                 <configuration>
                     <goals>install</goals>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <!--This tags the release in the form v@n.a.b.c We are going to use the default which is the project name followed by version numbers-->
+                    <!--<tagNameFormat>v@{project.version}</tagNameFormat>-->
                     <checkModificationExcludes>
                         <checkModificationExclude>pom.xml</checkModificationExclude>
                     </checkModificationExcludes>
@@ -49,6 +50,6 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:spring-devops/txn-spring-petclinic.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>txn-spring-petclinic-0.0.3</tag>
   </scm>
 </project>
