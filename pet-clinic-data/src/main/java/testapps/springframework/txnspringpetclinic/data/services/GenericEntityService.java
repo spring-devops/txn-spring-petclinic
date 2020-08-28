@@ -2,14 +2,14 @@ package testapps.springframework.txnspringpetclinic.data.services;
 
 import java.util.Set;
 
-public interface GenericEntityService<T, K> {
-        T findById(K id);
+public interface GenericEntityService<T, ID> {
+        public T findById(ID id);
 
-        T save(T t);
+        public T save(T t);
 
-        Set<T> findAll();
+        public Set<T> findAll();
 
-        void delete (T t);
+        public void delete (T t);
 
-        void deleteById (K k);
+        public void deleteById (ID id);
 }
