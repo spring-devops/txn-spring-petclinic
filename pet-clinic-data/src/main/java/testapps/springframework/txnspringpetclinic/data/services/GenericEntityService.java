@@ -7,5 +7,5 @@ public interface GenericEntityService<T, K> {
 
         T save(T t);
 
-        Set<T> finadAll();
+        Set<T> findAll();
 }
