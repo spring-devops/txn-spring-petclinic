@@ -50,6 +50,6 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:spring-devops/txn-spring-petclinic.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 </project>

@@ -1,49 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>txn-spring-petclinic</artifactId>
+<parent>
+    <artifactId>txn-spring-petclinic</artifactId>
+    <groupId>testapps.springframework</groupId>
+    <version>0.0.4-SNAPSHOT</version>
+</parent>
+<modelVersion>4.0.0</modelVersion>
+
+<!-- This was introduced in an attempt to reel in JSPs but it dod not work out. Lesving this commented out and can be removed if not needed at a later stage -->
+<!--<packaging>war</packaging>-->
+
+<artifactId>pet-clinic-web</artifactId>
+
+<!-- These properties were added to skip testing to save on time - will be turned on later once we reach the testing module -->
+<properties>
+    <maven.test.skip>true</maven.test.skip>
+    <!-- This is here for reference only (commented out) and likely will be dealt with later -->
+    <!--<start-class>testapps.springframework.txnspringpetclinic.TxnSpringPetclinicApplication</start-class>-->
+</properties>
+
+<dependencies>
+    <!-- Dependencies included for JSP processing at a later stage -->
+    <!-- Note: It is not certain if the TOMCAT dependency is even required, Leaving it here commented out in case we need this later on -->
+    <!--<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+    </dependency>-->
+    <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>javax.servlet.jsp-api</artifactId>
+        <version>2.3.3</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <!--<version>1.2</version>-->
+    </dependency>
+    <!-- The original dependencies from the course are below this line-->
+    <dependency>
+        <artifactId>pet-clinic-data</artifactId>
         <groupId>testapps.springframework</groupId>
         <version>0.0.4-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>pet-clinic-web</artifactId>
-
-    <dependencies>
-        <dependency>
-            <artifactId>pet-clinic-data</artifactId>
-            <groupId>testapps.springframework</groupId>
-            <version>0.0.4-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-    </dependencies>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+        <exclusions>
+            <exclusion>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+</dependencies>
 
 </project>
