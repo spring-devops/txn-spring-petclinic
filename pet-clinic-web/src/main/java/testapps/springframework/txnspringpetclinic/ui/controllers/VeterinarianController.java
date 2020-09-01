@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import testapps.springframework.txnspringpetclinic.data.services.VeterinarianCrudService;
 import testapps.springframework.txnspringpetclinic.ui.resolvers.ThymeLeafUrlService;
 
+@RequestMapping("/vets")
 @Controller
 public class VeterinarianController {
 
@@ -18,7 +19,7 @@ public class VeterinarianController {
 
     private final VeterinarianCrudService veterinarianCrudService;
 
-    @RequestMapping({"/vets","/vets/index","/vets/index.html", "/vets/index.aspx"})
+    @RequestMapping({"","/","/index.html"})
     public String listVets(Model model) {
         model.addAttribute("vets", veterinarianCrudService.findAll());
         return this.thymeLeafUrlService.getUrl("vets/index") ;
