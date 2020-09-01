@@ -2,7 +2,7 @@ package testapps.springframework.txnspringpetclinic.data.services;
 
 import java.util.Set;
 
-public interface GenericEntityService<T, ID> {
+public interface GenericEntityCrudService<T, ID> {
         public T findById(ID id);
 
         public T save(T t);

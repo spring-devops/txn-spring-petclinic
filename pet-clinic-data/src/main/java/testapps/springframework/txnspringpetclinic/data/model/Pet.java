@@ -30,4 +30,14 @@ public class Pet extends BaseEntityLong {
     public void setOwner(Owner owner) {
         this.owner = owner;
     }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "id=" + id +
+                ", birthDate=" + birthDate +
+                ", petType=" + petType +
+                ", ownerHash=" + ((owner == null) ? "<NULL>" : owner.hashCode()) +
+                '}';
+    }
 }

@@ -1,10 +1,12 @@
 package testapps.springframework.txnspringpetclinic.data.services;
 
+import org.springframework.stereotype.Service;
 import testapps.springframework.txnspringpetclinic.data.model.Veterinarian;
 import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMapService;
 import testapps.springframework.txnspringpetclinic.data.services.maps.MapIdService;
 
-public class VeterinarianServiceMap extends AbstractMapService<Veterinarian, Long> implements GenericEntityService <Veterinarian, Long>{
+@Service
+public class VeterinarianServiceMap extends AbstractMapService<Veterinarian, Long> implements VeterinarianCrudService {
 
     private final MapIdService<Veterinarian> mapIdService;
 
@@ -20,5 +22,10 @@ public class VeterinarianServiceMap extends AbstractMapService<Veterinarian, Lon
     @Override
     protected Long getObjectId(Veterinarian veterinarian) {
         return veterinarian.getId();
+    }
+
+    @Override
+    protected void setObjectId(Veterinarian veterinarian, Long aLong) {
+        veterinarian.setId(aLong);
     }
 }

@@ -1,10 +1,12 @@
 package testapps.springframework.txnspringpetclinic.data.services;
 
+import org.springframework.stereotype.Service;
 import testapps.springframework.txnspringpetclinic.data.model.Pet;
 import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMapService;
 import testapps.springframework.txnspringpetclinic.data.services.maps.MapIdService;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements GenericEntityService<Pet, Long>{
+@Service
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetCrudService {
 
     private final MapIdService<Pet> mapIdService;
 
@@ -20,5 +22,10 @@ public class PetServiceMap extends AbstractMapService<Pet, Long> implements Gene
     @Override
     protected Long getObjectId(Pet pet) {
         return pet.getId();
+    }
+
+    @Override
+    protected void setObjectId(Pet pet, Long aLong) {
+        pet.setId(aLong);
     }
 }

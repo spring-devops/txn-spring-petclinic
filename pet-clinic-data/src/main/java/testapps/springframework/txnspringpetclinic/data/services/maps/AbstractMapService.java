@@ -9,6 +9,8 @@ public abstract class AbstractMapService <T, ID> {
 
     protected abstract ID getObjectId(T t) ;
 
+    protected abstract void setObjectId(T t, ID id) ;
+
     public T findById(ID id) {
         return map.get(id);
     }
@@ -16,6 +18,7 @@ public abstract class AbstractMapService <T, ID> {
     public T save(T t) {
         ID id = getObjectId(t);
         if (id == null) id = getNewId();
+        setObjectId(t, id);
         map.put(id, t);
         return t;
     }
@@ -41,4 +44,15 @@ public abstract class AbstractMapService <T, ID> {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder toStringValue = new StringBuilder();
+        toStringValue.append("AbstractMapService >>>> Dump for: " + map.hashCode() + ", Size: " + map.size() +  "\n");
+        for (ID mapId: map.keySet()){
+            toStringValue.append("Class: " + map.get(mapId).getClass().getName() + ", ID: " + mapId.toString() + ", Value: " + map.get(mapId).toString() + "\n");
+        }
+        return toStringValue.toString();
+    }
+
 }

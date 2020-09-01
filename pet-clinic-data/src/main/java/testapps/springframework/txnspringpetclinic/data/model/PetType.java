@@ -10,4 +10,12 @@ public class PetType extends BaseEntityLong {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "PetType{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
