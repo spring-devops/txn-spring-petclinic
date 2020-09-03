@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -19,7 +22,7 @@ import javax.annotation.Resource;
 @Component
 @Configuration
 @EnableWebMvc
-public class ViewResolverConfiguration {
+public class ViewResolverConfiguration implements WebMvcConfigurer {
 
     private final JspUrlService jspUrlService;
     private final ThymeLeafUrlService thymeLeafUrlService;
@@ -95,6 +98,30 @@ public class ViewResolverConfiguration {
         return thymeleafViewResolver;
     }
 
+/*
+
+    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+            "classpath:/META-INF/resources/", "classpath:/resources/",
+            "classpath:/static/", "classpath:/public/" };
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
+    }
+*/
+
+
+    @Description("Static Content Resolver")
+    @Override
+    public void addResourceHandlers (ResourceHandlerRegistry registry) {
+        System.out.println("ViewResolverConfiguration >>> Adding Resource Handlers for static content ...");
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/META-INF/resources/", "classpath:/static/")
+                .setCachePeriod(3600)
+                .resourceChain(true)
+                .addResolver(new PathResourceResolver());
+    }
 
 
     //These are old style declarations to help understand only
