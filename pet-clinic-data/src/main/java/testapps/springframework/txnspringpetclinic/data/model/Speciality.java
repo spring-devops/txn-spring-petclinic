@@ -11,4 +11,18 @@ public class Speciality extends BaseEntityLong {
     public void setSpecialityName(String specialityName) {
         this.specialityName = specialityName;
     }
+
+    @Override
+    public String toString() {
+        return "Speciality{" +
+                "specialityHash=" + this.hashCode() + ", " +
+                "specialityName='" + specialityName + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
+    @Override
+    public String partialToString() {
+        return null;
+    }
 }

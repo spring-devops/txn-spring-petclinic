@@ -36,8 +36,13 @@ public class Pet extends BaseEntityLong {
         return "Pet{" +
                 "id=" + id +
                 ", birthDate=" + birthDate +
-                ", petType=" + petType +
-                ", ownerHash=" + ((owner == null) ? "<NULL>" : owner.hashCode()) +
+                ", petType=" + ((petType == null) ? "<NULL>" : petType) +
+                ", ownerHash=" + ((owner == null) ? "<NULL>" : owner.partialToString()) +
                 '}';
+    }
+
+    @Override
+    public String partialToString() {
+        return toString();
     }
 }

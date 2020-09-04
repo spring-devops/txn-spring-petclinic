@@ -31,4 +31,19 @@ public class PetVisit extends BaseEntityLong{
         this.pet = pet;
     }
 
+    @Override
+    public String toString() {
+        return "PetVisit{" +
+                "petVisitHash=" + this.hashCode() +
+                ", visitDate=" + visitDate +
+                ", description='" + description + '\'' +
+                ", pet=" + ((pet == null) ? "<NULL>" :  pet) +
+                ", id=" + id +
+                '}';
+    }
+
+    @Override
+    public String partialToString() {
+        return null;
+    }
 }

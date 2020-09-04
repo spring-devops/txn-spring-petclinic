@@ -12,6 +12,10 @@
             <th style="width: 150px;" th:text="'ID'">Owner ID ...</th>
             <th style="width: 150px;" th:text="'Last Name'">Owner Last Name ...</th>
             <th style="width: 150px;" th:text="'First Name'">Owner First Name ...</th>
+            <th style="width: 150px;" th:text="'City'">Owner City ...</th>
+            <th style="width: 150px;" th:text="'State'">Owner State ...</th>
+            <th style="width: 150px;" th:text="'Telephone'">Owner Telephone ...</th>
+            <th style="width: 150px;" th:text="'Pets'">Pets ...</th>
         </tr>
         </thead>
         <tbody>
@@ -20,6 +24,10 @@
             <td th:text="${owner.id}">10001</td>
             <td th:text="${owner.lastName}">McClinton</td>
             <td th:text="${owner.firstName}">Testy</td>
+            <td th:text="${owner.addressLine1}">1 Main Street</td>
+            <td th:text="${owner.city}">Hackson</td>
+            <td th:text="${owner.telephone}">999-999-9999</td>
+            <td><span th:each="pet: ${owner.pets}" th:text="${pet.petType.name} ">Dog, Cat</span></td>
         </tr>
         </tbody>
     </table>

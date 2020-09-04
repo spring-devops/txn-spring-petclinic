@@ -1,11 +1,12 @@
 package testapps.springframework.txnspringpetclinic.data.services;
 
+import org.springframework.stereotype.Service;
 import testapps.springframework.txnspringpetclinic.data.model.PetType;
 import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMapLongIdService;
-import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMapService;
 import testapps.springframework.txnspringpetclinic.data.services.maps.MapIdLongService;
 
-public class PetTypeServiceMap extends AbstractMapLongIdService<PetType> implements PetTYpeCrudService{
+@Service
+public class PetTypeServiceMap extends AbstractMapLongIdService<PetType> implements PetTypeCrudService {
 
     public PetTypeServiceMap(MapIdLongService<PetType> mapIdLongService) {
         super(mapIdLongService);

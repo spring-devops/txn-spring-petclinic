@@ -1,6 +1,6 @@
 package testapps.springframework.txnspringpetclinic.data.model;
 
-public class BaseEntityLong implements GenericBaseEntity<Long> {
+public abstract class BaseEntityLong implements GenericBaseEntity<Long> {
     Long id;
 
     @Override

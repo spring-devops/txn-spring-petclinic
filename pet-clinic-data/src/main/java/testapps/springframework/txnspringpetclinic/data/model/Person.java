@@ -1,6 +1,6 @@
 package testapps.springframework.txnspringpetclinic.data.model;
 
-public class Person extends BaseEntityLong {
+public abstract class Person extends BaseEntityLong {
     private String firstName;
     private String lastName;
 

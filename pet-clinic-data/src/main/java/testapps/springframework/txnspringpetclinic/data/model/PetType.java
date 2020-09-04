@@ -18,4 +18,9 @@ public class PetType extends BaseEntityLong {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+    @Override
+    public String partialToString() {
+        return toString();
+    }
 }

@@ -40,4 +40,26 @@ public class Owner extends Person{
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+    @Override
+    public String toString() {
+        return "Owner{" +
+                "ownerHash=" + this.hashCode() +
+                ", id=" + id + ", " +
+                super.toString() +
+                ", pets=" + ((pets == null) ? "<NULL>" : pets.size()) +
+                ", addressLine1='" + addressLine1 + '\'' +
+                ", city='" + city + '\'' +
+                ", telephone='" + telephone + '\'' +
+                '}';
+    }
+
+    @Override
+    public String partialToString() {
+        return "Owner{" +
+                "ownerHash=" + this.hashCode() +
+                ", id=" + id + ", " +
+                super.toString();
+    }
+
 }
