@@ -16,11 +16,17 @@ public class IndexController {
         this.jspUrlService = jspUrlService;
     }
 
-
     @RequestMapping({"/","","/index.html","/index.htm"})
     public String index(){
         /*System.out.println(">>>> Returning " + jspUrlService.getUrl("index"));
         return jspUrlService.getUrl("index");*/
         return thymeLeafUrlService.getUrl("index");
+    }
+
+    @RequestMapping({"/oups",})
+    public String error(){
+        /*System.out.println(">>>> Returning " + jspUrlService.getUrl("index"));
+        return jspUrlService.getUrl("index");*/
+        return thymeLeafUrlService.getUrl("oups");
     }
 }
