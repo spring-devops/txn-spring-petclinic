@@ -24,20 +24,31 @@ public class OwnerSaveService {
     }
 
     public void saveOwner (Owner owner){
-        if (owner == null) { /* Raise Exception here */}
-        if (!owner.isValid()) { /* Raise Exception here */}
+        boolean skipOwner = false;
+        if (owner == null) {
+            /* Raise Exception here */
+            skipOwner = true;
+            System.out.println("OwnerSaveService >>>> saveOwner >>>> ***WARNING*** Skipping Save For NULL Owner ");
+        }
+        if (!owner.isValid()) {
+            /* Raise Exception here */
+            skipOwner = true;
+            System.out.println("OwnerSaveService >>>> saveOwner >>>> ***WARNING*** Skipping Save For Owner " + owner.toString());
+        }
         //Note - The above check will have checked that everything inside owner is valid and ready to go database
-        ownerService.save(owner);
-        owner.getPets().forEach(pet -> {
-            PetType petType = pet.getPetType();
-            //If the Pet ID is missing, it needs to be saved, otherwise skip the save part
-            if (petType.getId() == null)
-                //The New Pet Type ID will be set automatically
-                petTypeService.save(petType);
-            if (pet.getId() == null)
-                //The New Pet ID will be set automatically
-                pet.setOwner(owner);
-                petService.save(pet) ;
-        });
+        if (!skipOwner) {
+            ownerService.save(owner);
+            owner.getPets().forEach(pet -> {
+                PetType petType = pet.getPetType();
+                //If the Pet ID is missing, it needs to be saved, otherwise skip the save part
+                if (petType.getId() == null)
+                    //The New Pet Type ID will be set automatically
+                    petTypeService.save(petType);
+                if (pet.getId() == null)
+                    //The New Pet ID will be set automatically
+                    pet.setOwner(owner);
+                petService.save(pet);
+            });
+        }
     }
 }

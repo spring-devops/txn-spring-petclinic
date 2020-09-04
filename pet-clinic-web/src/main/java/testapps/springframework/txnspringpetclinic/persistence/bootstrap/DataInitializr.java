@@ -32,19 +32,72 @@ public class DataInitializr implements CommandLineRunner {
         this.veterinarianSaveService = veterinarianSaveService;
     }
 
-    private void bootStrapOwnerAndPets() {
-        PetType petTypeDog = new PetType();
+    PetType petTypeDog = new PetType();
+    PetType petTypeCat = new PetType();
+    PetType petTypeHamster = new PetType();
+
+    Speciality spcSurgeon = new Speciality();
+    Speciality spcMedicine = new Speciality();
+    Speciality spcRadiologist = new Speciality();
+    Speciality spcPsychiatry = new Speciality();
+    Speciality spcGP = new Speciality();
+    Speciality spcOncologist = new Speciality();
+    Speciality spcNutritionist = new Speciality();
+
+    private void initializePetTypes(){
         petTypeDog.setName("Dog");
-        //petTypeService.save(petTypeDog);
-
-        PetType petTypeCat = new PetType();
         petTypeCat.setName("Cat");
-        //petTypeService.save(petTypeCat);
-
-        PetType petTypeHamster = new PetType();
         petTypeHamster.setName("Hamster");
-        //petTypeService.save(petTypeHamster);
+    }
 
+    private void initializeSpecialties() {
+        spcSurgeon.setSpecialityName(Speciality.SPECIALITIES[0]);
+        spcMedicine.setSpecialityName(Speciality.SPECIALITIES[1]);
+        spcRadiologist.setSpecialityName(Speciality.SPECIALITIES[2]);
+        spcPsychiatry.setSpecialityName(Speciality.SPECIALITIES[3]);
+        spcGP.setSpecialityName(Speciality.SPECIALITIES[4]);
+        spcOncologist.setSpecialityName(Speciality.SPECIALITIES[5]);
+        spcNutritionist.setSpecialityName(Speciality.SPECIALITIES[6]);
+    }
+
+    private Set<Pet> getPetsOwner1() {
+        Set<Pet> ownerPets = new HashSet<Pet>();
+
+        Pet pet = new Pet();
+        pet.setName("Coco");
+        pet.setBirthDate(LocalDate.of(2017, Month.MAY, 15));
+        pet.setPetType(petTypeDog);
+        ownerPets.add(pet);
+
+        pet = new Pet();
+        pet.setName("Mynard");
+        pet.setBirthDate(LocalDate.of(2011, Month.DECEMBER, 27));
+        pet.setPetType(petTypeCat);
+        ownerPets.add(pet);
+
+        pet = new Pet();
+        pet.setName("Chippie");
+        pet.setBirthDate(LocalDate.of(2019, Month.MARCH, 7));
+        pet.setPetType(petTypeHamster);
+        ownerPets.add(pet);
+
+        return ownerPets;
+    }
+
+    private Set<Pet> getPetsOwner2() {
+        Set<Pet> ownerPets = new HashSet<Pet>();
+
+        Pet pet = new Pet();
+        pet.setName("Centurion");
+        pet.setBirthDate(LocalDate.of(2004, Month.FEBRUARY, 28));
+        pet.setPetType(petTypeDog);
+        ownerPets.add(pet);
+
+        return ownerPets;
+    }
+
+    private void bootStrapOwnerAndPets() {
+        initializePetTypes();
         Owner ownerInitOwner1 = new Owner();
         //ownerInitOwner1.setId(1l);
         ownerInitOwner1.setFirstName("Micheal");
@@ -52,29 +105,7 @@ public class DataInitializr implements CommandLineRunner {
         ownerInitOwner1.setAddressLine1("123 Main St., Circle Line");
         ownerInitOwner1.setCity("New Jack City");
         ownerInitOwner1.setTelephone("222-222-1010");
-        Set<Pet> owner1Pets = new HashSet<Pet>();
-        ownerInitOwner1.setPets(owner1Pets);
-
-        Pet pet1 = new Pet();
-        pet1.setName("Coco");
-        pet1.setBirthDate(LocalDate.of(2017, Month.MAY, 15));
-        pet1.setPetType(petTypeDog);
-        owner1Pets.add(pet1);
-        //petService.save(pet1);
-
-        Pet pet2 = new Pet();
-        pet2.setName("Mynard");
-        pet2.setBirthDate(LocalDate.of(2011, Month.DECEMBER, 27));
-        pet2.setPetType(petTypeCat);
-        owner1Pets.add(pet2);
-        //petService.save(pet2);
-
-        Pet pet3 = new Pet();
-        pet3.setName("Chippie");
-        pet3.setBirthDate(LocalDate.of(2019, Month.MARCH, 7));
-        pet3.setPetType(petTypeHamster);
-        owner1Pets.add(pet3);
-        //petService.save(pet3);
+        ownerInitOwner1.setPets(getPetsOwner1());
 
         Owner ownerInitOwner2 = new Owner();
         //ownerInitOwner2.setId(2l);
@@ -83,37 +114,49 @@ public class DataInitializr implements CommandLineRunner {
         ownerInitOwner2.setAddressLine1("91 New Flamenco Blvd, Apt. B99");
         ownerInitOwner2.setCity("Racoon City");
         ownerInitOwner2.setTelephone("211-211-9898");
-        Set<Pet> owner2Pets = new HashSet<Pet>();
-        ownerInitOwner2.setPets(owner2Pets);
-
-        Pet pet4 = new Pet();
-        pet4.setName("Centurion");
-        pet4.setBirthDate(LocalDate.of(2004, Month.FEBRUARY, 28));
-        pet4.setPetType(petTypeDog);
-        owner2Pets.add(pet4);
-        //petService.save(pet4);
+        ownerInitOwner2.setPets(getPetsOwner2());
 
         ownerSaveService.saveOwner(ownerInitOwner1);
         ownerSaveService.saveOwner(ownerInitOwner2);
     }
 
+    private Set<Speciality> getSpecialitiesVet1() {
+        Set<Speciality> specialities = new HashSet<>();
+
+        specialities.add(spcSurgeon);
+        specialities.add(spcMedicine);
+        specialities.add(spcRadiologist);
+        specialities.add(spcPsychiatry);
+        specialities.add(spcGP);
+
+        return specialities;
+    }
+
+    private Set<Speciality> getSpecialitiesVet2() {
+        Set<Speciality> specialities = new HashSet<>();
+
+        specialities.add(spcGP);
+        specialities.add(spcOncologist);
+        specialities.add(spcNutritionist);
+
+        return specialities;
+    }
+
     private void bootStrapVeterinarian() {
-        Speciality speciality1 = new Speciality();
-        speciality1.setSpecialityName("Surgeon");
+        initializeSpecialties();
         Veterinarian veterinarianInitVeterinarian1 = new Veterinarian();
         //veterinarianInitVeterinarian1.setId(1l);
         veterinarianInitVeterinarian1.setFirstName("Dr. Phylis");
         veterinarianInitVeterinarian1.setLastName("Arbrorean");
-        veterinarianInitVeterinarian1.setSpeciality(speciality1);
+        veterinarianInitVeterinarian1.setSpecialities(getSpecialitiesVet1());
         veterinarianSaveService.saveVeterinarian(veterinarianInitVeterinarian1);
 
-        Speciality speciality2 = new Speciality();
-        speciality2.setSpecialityName("Medicine");
         Veterinarian veterinarianInitVeterinarian2 = new Veterinarian();
         //veterinarianInitVeterinarian2.setId(2l);
         veterinarianInitVeterinarian2.setFirstName("Dr. Gomer");
         veterinarianInitVeterinarian2.setLastName("Pyle");
-        veterinarianInitVeterinarian2.setSpeciality(speciality2);
+        Set<Speciality> specialities2 = new HashSet<>();
+        veterinarianInitVeterinarian2.setSpecialities(getSpecialitiesVet2());
         veterinarianSaveService.saveVeterinarian(veterinarianInitVeterinarian2);
     }
 

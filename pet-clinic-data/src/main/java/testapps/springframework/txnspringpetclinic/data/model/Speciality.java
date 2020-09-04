@@ -2,6 +2,8 @@ package testapps.springframework.txnspringpetclinic.data.model;
 
 public class Speciality extends BaseEntityLong {
 
+    public static final String [] SPECIALITIES = {"Surgeon", "Medicine", "Radiologist", "Psychiatry", "General Practitioner", "Oncologist", "Nutritionist"};
+
     private String specialityName;
 
     public String getSpecialityName() {

@@ -15,10 +15,25 @@ public class VeterinarianSaveService {
     }
 
     public void saveVeterinarian(Veterinarian vet) {
-        if (vet == null) { /* Raise Exception here */}
-        if (!vet.isValid()) { /* Raise Exception here */}
+        boolean skipVet = false;
+        if (vet == null) {
+            /* Raise Exception here */
+            skipVet = true;
+            System.out.println("OwnerSaveService >>>> saveOwner >>>> ***WARNING*** Skipping Save For NULL Owner ");
+        }
+
+        if (!vet.isValid()) {
+            /* Raise Exception here */
+            skipVet = true;
+            System.out.println("OwnerSaveService >>>> saveOwner >>>> ***WARNING*** Skipping Save For Vet " + vet.toString());
+        }
+
         //Note - The above check will have checked that everything inside vet is valid and ready to go database
-        if (vet.getSpeciality().getId() == null) specialityCrudService.save(vet.getSpeciality());
-        veterinarianService.save(vet);
+        if (!skipVet) {
+            vet.getSpecialities().forEach(specialty -> {
+                if (specialty.getId() == null) specialityCrudService.save(specialty);
+            });
+            veterinarianService.save(vet);
+        }
     }
 }

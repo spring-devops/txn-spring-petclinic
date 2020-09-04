@@ -1,17 +1,25 @@
 package testapps.springframework.txnspringpetclinic.data.model;
 
 import javax.xml.parsers.SAXParser;
+import java.util.Set;
 
 public class Veterinarian extends Person{
 
-    private Speciality speciality;
+    private Set<Speciality> specialities;
 
-    public Speciality getSpeciality() {
-        return speciality;
+    public Set<Speciality> getSpecialities() {
+        return specialities;
     }
 
-    public void setSpeciality(Speciality speciality) {
-        this.speciality = speciality;
+    public void setSpecialities(Set<Speciality> speciality) {
+        this.specialities = speciality;
+    }
+
+    protected boolean validateSpecialities() {
+        for (Speciality speciality : specialities) {
+            if (speciality == null || !speciality.isValid()) return false ;
+        }
+        return true;
     }
 
     @Override
@@ -21,7 +29,7 @@ public class Veterinarian extends Person{
         //For now, simply return true - this will be fixed later,
         // possibly by externalizing to a helper class that can
         // raise exceptions or handle messages back to the UI etc.
-        return (super.isValid() && speciality != null && speciality.isValid());
+        return (super.isValid() && specialities != null && validateSpecialities());
     }
 
     @Override
@@ -35,7 +43,7 @@ public class Veterinarian extends Person{
                 "vetHash=" + this.hashCode() +
                 ", id=" + id + ", " +
                 super.toString() +
-                ", speciality=" + ((speciality == null) ? "<NULL>" : speciality) +
+                ", specialities=" + ((specialities == null) ? "<NULL>" : specialities) +
                 '}';
     }
 
@@ -44,7 +52,8 @@ public class Veterinarian extends Person{
         return "Veterinarian{" +
                 "vetHash=" + this.hashCode() +
                 ", id=" + id + ", " +
-                super.toString();
+                super.toString() +
+                ", specialities=" + ((specialities == null) ? "<NULL>" : specialities.size());
     }
 
 }
