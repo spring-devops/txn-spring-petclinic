@@ -1,9 +1,11 @@
 package testapps.springframework.txnspringpetclinic.data.services;
 
+import org.springframework.stereotype.Service;
 import testapps.springframework.txnspringpetclinic.data.model.Speciality;
 import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMapLongIdService;
 import testapps.springframework.txnspringpetclinic.data.services.maps.MapIdLongService;
 
+@Service
 public class SpecialtyServiceMapBased extends AbstractMapLongIdService<Speciality> implements SpecialityCrudService{
 
     public SpecialtyServiceMapBased(MapIdLongService<Speciality> mapIdLongService) {

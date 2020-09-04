@@ -2,10 +2,7 @@ package testapps.springframework.txnspringpetclinic.persistence.bootstrap;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import testapps.springframework.txnspringpetclinic.data.model.Owner;
-import testapps.springframework.txnspringpetclinic.data.model.Pet;
-import testapps.springframework.txnspringpetclinic.data.model.PetType;
-import testapps.springframework.txnspringpetclinic.data.model.Veterinarian;
+import testapps.springframework.txnspringpetclinic.data.model.*;
 import testapps.springframework.txnspringpetclinic.data.services.*;
 
 import java.time.LocalDate;
@@ -21,16 +18,18 @@ public class DataInitializr implements CommandLineRunner {
     private final PetTypeCrudService petTypeService;
     private final PetCrudService petService;
     private final OwnerSaveService ownerSaveService;
+    private final VeterinarianSaveService veterinarianSaveService;
 
     public DataInitializr(OwnerCrudService ownerService,
                           VeterinarianCrudService veterinarianService,
                           PetTypeCrudService petTypeService,
-                          PetCrudService petCrudService, OwnerSaveService ownerSaveService) {
+                          PetCrudService petCrudService, OwnerSaveService ownerSaveService, VeterinarianSaveService veterinarianSaveService) {
         this.ownerService = ownerService;
         this.veterinarianService = veterinarianService;
         this.petTypeService = petTypeService;
         this.petService = petCrudService;
         this.ownerSaveService = ownerSaveService;
+        this.veterinarianSaveService = veterinarianSaveService;
     }
 
     private void bootStrapOwnerAndPets() {
@@ -99,18 +98,23 @@ public class DataInitializr implements CommandLineRunner {
     }
 
     private void bootStrapVeterinarian() {
+        Speciality speciality1 = new Speciality();
+        speciality1.setSpecialityName("Surgeon");
         Veterinarian veterinarianInitVeterinarian1 = new Veterinarian();
         //veterinarianInitVeterinarian1.setId(1l);
         veterinarianInitVeterinarian1.setFirstName("Dr. Phylis");
         veterinarianInitVeterinarian1.setLastName("Arbrorean");
-        veterinarianService.save(veterinarianInitVeterinarian1);
+        veterinarianInitVeterinarian1.setSpeciality(speciality1);
+        veterinarianSaveService.saveVeterinarian(veterinarianInitVeterinarian1);
 
+        Speciality speciality2 = new Speciality();
+        speciality2.setSpecialityName("Medicine");
         Veterinarian veterinarianInitVeterinarian2 = new Veterinarian();
         //veterinarianInitVeterinarian2.setId(2l);
         veterinarianInitVeterinarian2.setFirstName("Dr. Gomer");
         veterinarianInitVeterinarian2.setLastName("Pyle");
-        veterinarianService.save(veterinarianInitVeterinarian2);
-
+        veterinarianInitVeterinarian2.setSpeciality(speciality2);
+        veterinarianSaveService.saveVeterinarian(veterinarianInitVeterinarian2);
     }
 
     @Override

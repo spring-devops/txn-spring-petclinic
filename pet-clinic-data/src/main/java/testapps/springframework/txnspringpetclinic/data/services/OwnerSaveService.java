@@ -26,7 +26,7 @@ public class OwnerSaveService {
     public void saveOwner (Owner owner){
         if (owner == null) { /* Raise Exception here */}
         if (!owner.isValid()) { /* Raise Exception here */}
-        //Note - The above check will have checked that everything inside owner is valid and resdy to go database
+        //Note - The above check will have checked that everything inside owner is valid and ready to go database
         ownerService.save(owner);
         owner.getPets().forEach(pet -> {
             PetType petType = pet.getPetType();
