@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import testapps.springframework.txnspringpetclinic.data.services.OwnerCrudService;
-import testapps.springframework.txnspringpetclinic.data.services.OwnerServiceMap;
+import testapps.springframework.txnspringpetclinic.data.services.OwnerServiceMapBased;
 import testapps.springframework.txnspringpetclinic.ui.resolvers.ThymeLeafUrlService;
 
 @RequestMapping("/owners")
@@ -13,9 +13,11 @@ public class OwnerController {
 
     private final ThymeLeafUrlService thymeLeafUrlService;
 
-    public OwnerController(ThymeLeafUrlService thymeLeafUrlService, OwnerServiceMap ownerServiceMap) {
+    public OwnerController(
+            ThymeLeafUrlService thymeLeafUrlService,
+            OwnerCrudService ownerService) {
         this.thymeLeafUrlService = thymeLeafUrlService;
-        this.ownerCrudService = ownerServiceMap;
+        this.ownerCrudService = ownerService;
     }
 
     private final OwnerCrudService ownerCrudService;

@@ -7,9 +7,9 @@ import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMa
 import testapps.springframework.txnspringpetclinic.data.services.maps.MapIdLongService;
 
 @Service
-public class OwnerServiceMap extends AbstractMapLongIdService<Owner> implements OwnerCrudService {
+public class OwnerServiceMapBased extends AbstractMapLongIdService<Owner> implements OwnerCrudService {
 
-    public OwnerServiceMap(MapIdLongService<Owner> mapIdLongService) {
+    public OwnerServiceMapBased(MapIdLongService<Owner> mapIdLongService) {
         super (mapIdLongService);
     }
 

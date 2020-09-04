@@ -4,9 +4,9 @@ import testapps.springframework.txnspringpetclinic.data.model.Speciality;
 import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMapLongIdService;
 import testapps.springframework.txnspringpetclinic.data.services.maps.MapIdLongService;
 
-public class SpecialtyServiceMap extends AbstractMapLongIdService<Speciality> implements SpecialityCrudService{
+public class SpecialtyServiceMapBased extends AbstractMapLongIdService<Speciality> implements SpecialityCrudService{
 
-    public SpecialtyServiceMap(MapIdLongService<Speciality> mapIdLongService) {
+    public SpecialtyServiceMapBased(MapIdLongService<Speciality> mapIdLongService) {
         super(mapIdLongService);
     }
 
