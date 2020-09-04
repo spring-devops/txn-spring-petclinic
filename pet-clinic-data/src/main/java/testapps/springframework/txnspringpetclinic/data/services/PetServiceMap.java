@@ -2,21 +2,15 @@ package testapps.springframework.txnspringpetclinic.data.services;
 
 import org.springframework.stereotype.Service;
 import testapps.springframework.txnspringpetclinic.data.model.Pet;
+import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMapLongIdService;
 import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMapService;
-import testapps.springframework.txnspringpetclinic.data.services.maps.MapIdService;
+import testapps.springframework.txnspringpetclinic.data.services.maps.MapIdLongService;
 
 @Service
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetCrudService {
+public abstract class PetServiceMap extends AbstractMapLongIdService<Pet> implements PetCrudService {
 
-    private final MapIdService<Pet> mapIdService;
-
-    public PetServiceMap(MapIdService mapIdService) {
-        this.mapIdService = mapIdService;
-    }
-
-    @Override
-    protected Long getNewId() {
-        return mapIdService.getNewId(map);
+   public PetServiceMap (MapIdLongService<Pet> mapIdLongService) {
+        super(mapIdLongService);
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Service
-public class MapIdService <K> implements GenericIdService <Long, Map<Long, K>> {
+public class MapIdLongService<K> implements GenericIdService <Long, Map<Long, K>> {
 
     //Note: We can implement a separate sequence for each MAP INSTANCE that gets passed. However for purposes of example, we can share the same seed with all maps
     //Conversely we can have this class as a prototype and then each ID series will be unique to the instance of the Service that creates it
@@ -22,7 +22,7 @@ public class MapIdService <K> implements GenericIdService <Long, Map<Long, K>> {
         if (returnId <= currentValue)
             returnId = currentValue + 1 ;
         currentValue = returnId;
-        System.out.println("MapIdService >>>> Returning next ID: " + returnId + " for Map: " + objectToInspect.hashCode() + ", Current ID is set to: " + currentValue);
+        //System.out.println("MapIdService >>>> Returning next ID: " + returnId + " for Map: " + objectToInspect.hashCode() + ", Current ID is set to: " + currentValue);
         return returnId;
     }
 

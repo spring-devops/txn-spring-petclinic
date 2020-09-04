@@ -2,21 +2,15 @@ package testapps.springframework.txnspringpetclinic.data.services;
 
 import org.springframework.stereotype.Service;
 import testapps.springframework.txnspringpetclinic.data.model.Owner;
+import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMapLongIdService;
 import testapps.springframework.txnspringpetclinic.data.services.maps.AbstractMapService;
-import testapps.springframework.txnspringpetclinic.data.services.maps.MapIdService;
+import testapps.springframework.txnspringpetclinic.data.services.maps.MapIdLongService;
 
 @Service
-public class OwnerServiceMap extends AbstractMapService <Owner, Long> implements OwnerCrudService {
+public class OwnerServiceMap extends AbstractMapLongIdService<Owner> implements OwnerCrudService {
 
-    private final MapIdService<Owner> mapIdService;
-
-    public OwnerServiceMap(MapIdService mapIdService) {
-        this.mapIdService = mapIdService;
-    }
-
-    @Override
-    protected Long getNewId() {
-        return mapIdService.getNewId(map);
+    public OwnerServiceMap(MapIdLongService<Owner> mapIdLongService) {
+        super (mapIdLongService);
     }
 
     @Override
