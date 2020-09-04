@@ -45,21 +45,25 @@ public class DataInitializr implements CommandLineRunner {
         petTypeService.save(petTypeHamster);
 
         Pet pet1 = new Pet();
+        pet1.setName("Coco");
         pet1.setBirthDate(LocalDate.of(2017, Month.MAY, 15));
         pet1.setPetType(petTypeDog);
         petService.save(pet1);
 
         Pet pet2 = new Pet();
+        pet2.setName("Mynard");
         pet2.setBirthDate(LocalDate.of(2011, Month.DECEMBER, 27));
-        pet2.setPetType(petTypeDog);
+        pet2.setPetType(petTypeCat);
         petService.save(pet2);
 
         Pet pet3 = new Pet();
+        pet3.setName("Chippie");
         pet3.setBirthDate(LocalDate.of(2019, Month.MARCH, 7));
         pet3.setPetType(petTypeHamster);
         petService.save(pet3);
 
         Pet pet4 = new Pet();
+        pet4.setName("Centurion");
         pet4.setBirthDate(LocalDate.of(2004, Month.FEBRUARY, 28));
         pet4.setPetType(petTypeDog);
         petService.save(pet4);

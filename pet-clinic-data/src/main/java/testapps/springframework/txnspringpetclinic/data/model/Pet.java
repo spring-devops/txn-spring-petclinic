@@ -3,9 +3,19 @@ package testapps.springframework.txnspringpetclinic.data.model;
 import java.time.LocalDate;
 
 public class Pet extends BaseEntityLong {
+    private String name;
+
     private LocalDate birthDate;
     private PetType petType;
     private Owner owner;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public LocalDate getBirthDate() {
         return birthDate;
@@ -35,6 +45,7 @@ public class Pet extends BaseEntityLong {
     public String toString() {
         return "Pet{" +
                 "id=" + id +
+                ", name=" + name +
                 ", birthDate=" + birthDate +
                 ", petType=" + ((petType == null) ? "<NULL>" : petType) +
                 ", ownerHash=" + ((owner == null) ? "<NULL>" : owner.partialToString()) +
