@@ -15,6 +15,21 @@ public class Veterinarian extends Person{
     }
 
     @Override
+    public boolean isValid() {
+        //The owner must have first name, last name, adddress, city, state, pets
+
+        //For now, simply return true - this will be fixed later,
+        // possibly by externalizing to a helper class that can
+        // raise exceptions or handle messages back to the UI etc.
+        return (super.isValid() && speciality != null && speciality.isValid());
+    }
+
+    @Override
+    public boolean isValidEntity() {
+        return isValid();
+    }
+
+    @Override
     public String toString() {
         return "Veterinarian{" +
                 "vetHash=" + this.hashCode() +

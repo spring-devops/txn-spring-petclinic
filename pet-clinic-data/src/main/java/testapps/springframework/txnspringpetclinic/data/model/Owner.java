@@ -41,6 +41,41 @@ public class Owner extends Person{
         this.telephone = telephone;
     }
 
+    protected boolean validateAddress() {
+        return (
+                this.addressLine1 != null &&
+                this.addressLine1.length() > 0 &&
+                this.telephone != null &&
+                this.telephone.length() > 0 &&
+                this.city != null &&
+                this.city.length() > 0 &&
+                this.pets != null &&
+                this.pets.size() > 0
+        );
+    }
+
+    protected boolean validatePets() {
+        for (Pet pet : pets) {
+            if (pet == null || !pet.isValid()) return false ;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isValid() {
+        //The owner must have first name, last name, adddress, city, state, pets
+
+        //For now, simply return true - this will be fixed later,
+        // possibly by externalizing to a helper class that can
+        // raise exceptions or handle messages back to the UI etc.
+        return (super.isValid()) && validateAddress() && validatePets();
+    }
+
+    @Override
+    public boolean isValidEntity() {
+        return isValid();
+    }
+
     @Override
     public String toString() {
         return "Owner{" +
@@ -61,5 +96,4 @@ public class Owner extends Person{
                 ", id=" + id + ", " +
                 super.toString();
     }
-
 }

@@ -31,6 +31,20 @@ public class PetVisit extends BaseEntityLong{
         this.pet = pet;
     }
 
+    protected boolean validatePetVisit() {
+        return visitDate != null && description != null && description.length() > 0 && pet != null ;
+    }
+
+    @Override
+    public boolean isValid() {
+        return validatePetVisit() && pet.isValid();
+    }
+
+    @Override
+    public boolean isValidEntity() {
+        return isValid();
+    }
+
     @Override
     public String toString() {
         return "PetVisit{" +

@@ -12,4 +12,6 @@ public abstract class BaseEntityLong implements GenericBaseEntity<Long> {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public abstract boolean isValidEntity () ;
 }

@@ -3,6 +3,7 @@ package testapps.springframework.txnspringpetclinic.data.model;
 import java.time.LocalDate;
 
 public class Pet extends BaseEntityLong {
+
     private String name;
 
     private LocalDate birthDate;
@@ -41,6 +42,25 @@ public class Pet extends BaseEntityLong {
         this.owner = owner;
     }
 
+    protected boolean validatePet() {
+        return (
+                this.name != null &&
+                        this.name.length() > 0 &&
+                        this.birthDate != null &&
+                        petType != null
+        );
+    }
+
+    @Override
+    public boolean isValid() {
+        return validatePet() && petType.isValid();
+    }
+
+    @Override
+    public boolean isValidEntity() {
+        return isValid();
+    }
+
     @Override
     public String toString() {
         return "Pet{" +
@@ -48,7 +68,7 @@ public class Pet extends BaseEntityLong {
                 ", name=" + name +
                 ", birthDate=" + birthDate +
                 ", petType=" + ((petType == null) ? "<NULL>" : petType) +
-                ", ownerHash=" + ((owner == null) ? "<NULL>" : owner.partialToString()) +
+                ", owner=" + ((owner == null) ? "<NULL>" : owner.partialToString()) +
                 '}';
     }
 

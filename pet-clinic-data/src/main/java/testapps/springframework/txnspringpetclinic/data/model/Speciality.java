@@ -13,6 +13,16 @@ public class Speciality extends BaseEntityLong {
     }
 
     @Override
+    public boolean isValid() {
+        return specialityName != null && specialityName.length() > 0;
+    }
+
+    @Override
+    public boolean isValidEntity() {
+        return isValid();
+    }
+
+    @Override
     public String toString() {
         return "Speciality{" +
                 "specialityHash=" + this.hashCode() + ", " +
@@ -23,6 +33,6 @@ public class Speciality extends BaseEntityLong {
 
     @Override
     public String partialToString() {
-        return null;
+        return toString();
     }
 }

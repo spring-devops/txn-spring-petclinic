@@ -1,6 +1,6 @@
 package testapps.springframework.txnspringpetclinic.data.model;
 
-public abstract class Person extends BaseEntityLong {
+public abstract class Person<K> extends BaseEntityLong {
     private String firstName;
     private String lastName;
 
@@ -27,5 +27,18 @@ public abstract class Person extends BaseEntityLong {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public boolean isValid() {
+        return (
+                this.firstName != null &&
+                        this.firstName.length() > 0 &&
+                        this.lastName != null &&
+                        this.lastName.length() > 0
+        );
+    }
+
+    public boolean isValidEntity() {
+        return isValid();
     }
 }
